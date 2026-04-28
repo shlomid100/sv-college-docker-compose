@@ -1,12 +1,16 @@
 services:
   app:
-    image: node-app:0.1
-    container_name: node-app
+    image: python-app:0.1
+    container_name: python-app
     ports:
-      - 3005:3005
+      - 3000:3000
     environment:
-      - MYSQL_PORT=3306
-      - MYSQL_HOST=mysql
+      PORT: 3000
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: Sd230391!
+      MYSQL_DATABASE: mysql
   mysql:
     image: mysql
     container_name: mysqldb
@@ -15,8 +19,9 @@ services:
     volumes:
       - sv_mysql_data:/data/db
     environment:
-      - MYSQL_USER:root
-      - MYSQL_ROOT_PASSWORD:Sd230391!
+      MYSQL_ROOT_PASSWORD: Sd230391!
+      MYSQL_DATABASE: mysql
+
 volumes:
   sv_mysql_data:
     external: true
