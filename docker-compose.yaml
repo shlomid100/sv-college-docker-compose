@@ -1,0 +1,33 @@
+services:
+  app:
+    image: node-app:0.1
+    container_name: node-app
+    ports:
+      - 3005:3005
+    environment:
+      - MYSQL_PORT=3306
+      - MYSQL_HOST=mysql
+  mysql:
+    image: mysql
+    container_name: mysqldb
+    ports:
+      - 3306:3306 
+    volumes:
+      - sv_mysql_data:/data/db
+    environment:
+      - MYSQL_USER:root
+      - MYSQL_ROOT_PASSWORD:Sd230391!
+  mysql-client:
+    image: mysql
+    container_name: mysqlclient
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: mysqldb://root:Sd230391@mysql:3306/
+      ME_CONFIG_BASICAUTH_ENABLED: true
+      MYSQL_USER:root
+      MYSQL_ROOT_PASSWORD:Sd230391!
+
+volumes:
+  sv_mysql_data:
+    external: true
