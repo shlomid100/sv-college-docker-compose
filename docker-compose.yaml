@@ -11,17 +11,35 @@ services:
       MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: Sd230391!
       MYSQL_DATABASE: mysql
+    depends_on:
+      mysql:
+        condition: service_healthy
   mysql:
     image: mysql
     container_name: mysqldb
     ports:
       - 3306:3306 
     volumes:
-      - sv_mysql_data:/data/db
+      - sv_mysql_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: Sd230391!
       MYSQL_DATABASE: mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 10
+
+    :
+    image: dbeaver/cloudbeaver:latest
+    container_name: cloudbeaver
+    ports:
+    - "8080:8978"
+    volumes:
+    - cloudbeaver_data:/opt/cloudbeaver/workspace
+    depends_on:
+    - mysql
 
 volumes:
   sv_mysql_data:
     external: true
+  cloudbeaver_data:
