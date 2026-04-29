@@ -29,7 +29,7 @@ services:
       interval: 5s
       retries: 10
 
-    :
+  cloudbeaver:
     image: dbeaver/cloudbeaver:latest
     container_name: cloudbeaver
     ports:
