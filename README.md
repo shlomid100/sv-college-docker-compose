@@ -35,3 +35,25 @@ express in Jnods it's like Flask in python
 mongoose - library for mongodb connection
 
 create image with MongoDB
+Basic URI = mongodb://localhost:27017
+express - web framewokr for nodejs mongoose - library for mongodb conection
+
+docker volume create sv_mongo_data
+
+docker run -d
+--name mongodb
+-p 27018:27017
+-e MONGO_INITDB_ROOT_USERNAME=root
+-e MONGO_INITDB_ROOT_PASSWORD=secretPassword
+-v sv_mongo_data:/data/db
+mongo:latest
+
+mongo CLI (docker) mongo Client (docker compass) mongo SDK (javascript)
+
+dotenv
+
+docker build -t node-app:0.1 .
+
+docker run -d --name node-app -p 3005:3005 node-app:0.1
+
+docker run -d --name node-app -e MONGO_PORT=27017 -e MONGO_HOST=172.17.0.2 -p 3005:3005 node-app:0.1
