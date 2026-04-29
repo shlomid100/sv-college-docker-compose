@@ -20,6 +20,12 @@
    
 5. After the two conatiners are up, I connected to the mysql server: docker exec -it mysqldb bash, then connect to sql prompt by: mysql -h localhost -uroot -pS...! , Insid we can see the databases:
    show databases; --> then choose a db:  use mysql; --> see the tables in db: show tables; --> then run sql on it: select * from user;
+
+6. In oreder to look on the DB with client I used dbevear/cloudbeaver added to compose.yaml the service cloudbeaver also add it the health check so will be  
+   available only after mysql service is up
+    after MYSQL is u, after it's up do: docker exec -it cloudbeaver bash and see the volume inside: /opt/cloudbeaver/workspace
+
+7. open the UI of cloudbeaver http://localhost:8080/ define the admin details cbadmin/Sd..! and create connection to our MYSQL DB, need to set the service IP not localhost
  
 
 # sv-college-docker-compose
