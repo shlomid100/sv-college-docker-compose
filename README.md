@@ -28,7 +28,8 @@
 7. open the UI of cloudbeaver http://localhost:8080/ define the admin details cbadmin/Sd..! and create connection to our MYSQL DB, need to set the service IP not localhost
  
 
-# sv-college-docker-compose
+# sv-college-docker-compose with MONGODB
+
 DB --> MONGODB
 ClientDB = Mongo Compass
 express in Jnods it's like Flask in python
